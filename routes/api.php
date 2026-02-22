@@ -15,7 +15,7 @@ Route::post('/login',[AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     
-
+Route::post('/logout',[AuthController::class, 'logout']);
 
 Route::post('/saveRoles',[RoleController::class, 'createRole']);
 Route::get('/getRoles',[RoleController::class, 'readAllRoles']);

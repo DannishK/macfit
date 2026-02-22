@@ -23,6 +23,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+
+        'role_id',
+        'is_active',
+        'user_image',
     ];
 
     /**
@@ -40,11 +44,20 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
+    protected $casts=[
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+
+        ];
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+    public function abilities(){
+        return [
+            'admin'=> $this->role->name == 1,
+            'user'=> $this->role->name == 2,
+            'trainer'=> $this->role->name == 3,
+            'staff'=> $this->role->name == 4,
         ];
     }
 }
