@@ -9,9 +9,18 @@ use App\Http\Controllers\BundleController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\VerifyEmaliController;
+use App\Http\Controllers\ResendEmailVerificationController;
 
 Route::post('/register',[AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
+
+Route::get('/email/verify/{id}/{hash}',[VerifyEmaliController::class, 'verify'])
+->name('verification.verify')
+->middleware(['signed','throttle:6,1']);
+
+Route::post('/email/resend',[ResendEmailVerificationController::class, 'resend'])
+->middleware('throttle:6,1');
 
 Route::middleware('auth:sanctum')->group(function () {
     

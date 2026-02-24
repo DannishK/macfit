@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             
-        $table->unsignedBigInteger('role_id')->after('id');
+        $table->unsignedBigInteger('role_id')->default(3);
         $table->foreign('role_id')->references('id')->on('roles');
         $table->boolean('is_active')->nullable();
         $table->string('user_image')->nullable();

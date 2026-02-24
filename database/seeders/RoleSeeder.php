@@ -15,19 +15,19 @@ class RoleSeeder extends Seeder
     {
         Role::create([
             'name' =>'Admin',
-            'description'=>''
+            'description'=>'all previlages'
         ]);
          Role::create([
-            'name' =>'Manager',
-            'description'=>''
+            'name' =>'Trainer',
+            'description'=>'can add users'
         ]);
          Role::create([
             'name' =>'user',
-            'description'=>''
+            'description'=>'no previlages to database'
         ]);
          Role::create([
             'name' =>'staff',
-            'description'=>''
+            'description'=>'can read and create users'
         ]);
     }
 }

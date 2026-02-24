@@ -54,10 +54,10 @@ class User extends Authenticatable
     }
     public function abilities(){
         return [
-            'admin'=> $this->role->name == 1,
-            'user'=> $this->role->name == 2,
-            'trainer'=> $this->role->name == 3,
-            'staff'=> $this->role->name == 4,
+            'admin'=> $this->role->id == 1,
+            'user'=> $this->role->id == 3,
+            'trainer'=> $this->role->id == 2,
+            'staff'=> $this->role->id == 4,
         ];
     }
 }
