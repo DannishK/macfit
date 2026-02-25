@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('usage',1000);
-            $table->string('model_no');
+            $table->string('model_no')->unique();
             $table->double('value');
             $table->string('status');
             $table->timestamps();

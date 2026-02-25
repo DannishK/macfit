@@ -12,7 +12,7 @@ class EquipmentController extends Controller
     $validated = $request->validate([
         'name'=>'required|string|unique:equipments,name',
         'usage'=>'string',
-        'model_no'=>'string',
+        'model_no'=>'string|required|unique:equipments,model_no',
         'value'=>'integer',
         'status'=>'string',
     ]);
@@ -64,7 +64,7 @@ public function updateEquipment(Request $request,$id){
     $validated = $request->validate([
         'name'=>'required|string|unique:equipments,name',
         'usage'=>'string',
-        'model_no'=>'string',
+        'model_no'=>'string|required|unique:equipments,model_no',
         'value'=>'integer',
         'status'=>'string',
     ]);
