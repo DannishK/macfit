@@ -113,3 +113,7 @@ uncomment the DB stuff and change The DB_DATABSAE= "your database name"
 then strat with php artisan migrate
 
 then do php artisan install:api
+
+
+git checkout -b feature/admin
+

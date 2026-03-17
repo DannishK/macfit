@@ -12,6 +12,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VerifyEmaliController;
 use App\Http\Controllers\ResendEmailVerificationController;
 use App\Http\Controllers\UserOtpController;
+use App\Http\Controllers\UsersController;
 
 
 Route::post('/register',[AuthController::class, 'register']);
@@ -70,5 +71,7 @@ Route::get('/getSubscriptions',[SubscriptionController::class, 'readAllSubscript
 Route::get('/getSubscription/{id}',[SubscriptionController::class, 'readSubscription']);
 Route::post('/updateSubscription/{id}',[SubscriptionController::class, 'updateSubscription']);
 Route::delete('/deleteSubscription/{id}',[SubscriptionController::class, 'deleteSubscription']);
+
+Route::resource('users', UsersController::class);
 
 });
