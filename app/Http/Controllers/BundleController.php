@@ -13,6 +13,7 @@ class BundleController extends Controller
         'name'=>'required|string|unique:bundles,name',
         'description'=>'nullable|string|max:1000',
         'duration'=>'required',
+        'value'=>'required|numeric|min:0',
         'category_id'=>'integer|required|exists:categories,id',
         'start_time'=>'required',
     ]);
@@ -21,6 +22,7 @@ class BundleController extends Controller
     $bundle->name = $validated['name'];
     $bundle->description = $validated['description'];
     $bundle->duration = $validated['duration'];
+    $bundle->value = $validated['value'];
     $bundle->category_id = $validated['category_id'];
     $bundle->start_time = $validated['start_time'];
 

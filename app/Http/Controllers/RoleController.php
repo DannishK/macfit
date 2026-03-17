@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
+
+public function __construct(){
+    $this->authorizeResource(Role::class, 'role');
+
+}
+
+
+
+
     public function createRole(Request $request){
 
     $validated = $request->validate([
@@ -29,6 +39,7 @@ class RoleController extends Controller
     }
 }
 public function readAllRoles(){
+    $this->authorize('viewAny',Role::class);
     try{
         $roles = Role::all();
         return response()->json($roles);
@@ -88,4 +99,5 @@ public function deleteRole($id){
         ]);
     }
 }
+
 }

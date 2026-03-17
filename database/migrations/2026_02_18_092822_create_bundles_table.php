@@ -17,6 +17,7 @@ return new class extends Migration
             $table->dateTime('start_time');
             $table->string('description',1000);
             $table->time('duration');
+            $table->double('value');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

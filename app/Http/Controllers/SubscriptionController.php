@@ -9,9 +9,11 @@ class SubscriptionController extends Controller
     public function createSubscription(Request $request){
 
     $validated = $request->validate([
-        'user_id'=>'required|string|unique:subscriptions,user_id',
+        //'user_id'=>'required|string|unique:subscriptions,user_id',
         'bundle_id'=>'integer|required|exists:bundles,id',
     ]);
+
+    $userId = auth()->user->id;
 
     $subscription = new Subscription();
     $subscription->user_id = $validated['user_id'];

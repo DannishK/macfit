@@ -27,6 +27,10 @@ class User extends Authenticatable
         'role_id',
         'is_active',
         'user_image',
+        'phoneNumber',
+        'gymLocation',
+        'gender',
+        'dob',
     ];
 
     /**
@@ -50,7 +54,8 @@ class User extends Authenticatable
 
         ];
     public function role(){
-        return $this->belongsTo(Role::class);
+        $role =$this->belongsTo(Role::class);
+        return $role;
     }
     public function abilities(){
         return [
@@ -59,5 +64,9 @@ class User extends Authenticatable
             'trainer'=> $this->role->id == 2,
             'staff'=> $this->role->id == 4,
         ];
-    }
+         
+    // public function role(){
+    //     $this->belongsTo(Role::class);
+    // }
+}
 }

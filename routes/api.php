@@ -11,9 +11,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VerifyEmaliController;
 use App\Http\Controllers\ResendEmailVerificationController;
+use App\Http\Controllers\UserOtpController;
+
 
 Route::post('/register',[AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
+Route::post('/verify-otp',[UserOtpController::class, 'verifyOtp']);
+
+Route::get('/userInfo',[AuthController::class, 'userInfo']);
 
 Route::get('/email/verify/{id}/{hash}',[VerifyEmaliController::class, 'verify'])
 ->name('verification.verify')
@@ -23,6 +28,9 @@ Route::post('/email/resend',[ResendEmailVerificationController::class, 'resend']
 ->middleware('throttle:6,1');
 
 Route::middleware('auth:sanctum')->group(function () {
+
+Route::get('/userInfo',[AuthController::class, 'userInfo']);
+
     
 Route::post('/logout',[AuthController::class, 'logout']);
 
